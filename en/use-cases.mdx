@@ -1,0 +1,65 @@
+---
+title: "Use cases"
+description: "Examples of how different businesses use Need Alert."
+icon: "lightbulb"
+---
+
+"Waiting for something" is a problem in every industry. Here are a few examples.
+
+## Brick-and-mortar shops
+
+<CardGroup cols={2}>
+  <Card title="Bakery" icon="bread-slice">
+    QR code on the window: "cheese bread is out of the oven". Everyone who scanned it is notified when the batch is ready. Use a **single queue**.
+  </Card>
+  <Card title="Neighborhood store" icon="shop">
+    A QR code on the shelf of an out-of-stock product. You notify people when you restock.
+  </Card>
+  <Card title="Ice cream shop" icon="ice-cream">
+    One item per flavor: "let me know when you make it again".
+  </Card>
+  <Card title="Food truck" icon="truck">
+    A fixed QR code at your spot. You [schedule](/en/establishments/schedule-alerts) the alert for when you arrive.
+  </Card>
+</CardGroup>
+
+## Restaurants
+
+<CardGroup cols={2}>
+  <Card title="Buffet" icon="utensils">
+    One item per dish of the day. You see how many people are waiting for the stroganoff and decide whether to make more.
+  </Card>
+  <Card title="Seasonal dish" icon="fish">
+    Customers are notified the day the dish is back on the menu.
+  </Card>
+</CardGroup>
+
+## Healthcare
+
+<CardGroup cols={2}>
+  <Card title="Clinics and practices" icon="stethoscope">
+    A last-minute slot queue: when a patient cancels, everyone in the queue is notified and the first to confirm gets the slot.
+  </Card>
+  <Card title="Blood bank" icon="droplet">
+    One item per blood type, with a **recurring queue**: donors sign up once and are called whenever their type runs low.
+  </Card>
+</CardGroup>
+
+<Note>
+  When joining a queue reveals health data (blood type, medical specialty), mark the item as **Requires consent for sensitive data**. People confirm an extra consent when joining. See [Items and QR codes](/en/establishments/items-and-qr-codes).
+</Note>
+
+## Services with limited spots
+
+- **Courses and gyms:** a waitlist for a full class, with an alert when someone drops out.
+- **Hair salons and barbershops:** an alert when a slot opens up after a cancellation.
+- **Car repair shops:** "your car is ready for pickup".
+- **Equipment rental:** an alert when a rented piece of equipment is returned.
+
+## Automatic integrations
+
+With the [API](/en/api/overview), your own system sends the alert:
+
+- Your **ERP** notifies people when a SKU is back in stock.
+- Your **clinic's booking system** notifies people when an appointment is cancelled.
+- Your **delivery platform** notifies people when a restaurant starts taking orders again.

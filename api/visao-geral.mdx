@@ -1,0 +1,42 @@
+---
+title: "Visão geral da API"
+description: "Integre o sistema do seu negócio ao Need Alert e dispare alertas automaticamente."
+icon: "code"
+---
+
+<Warning>
+  **A API pública está em desenvolvimento.** Esta página descreve o que está planejado. A referência completa dos endpoints e as chaves de API serão publicadas aqui quando estiverem disponíveis.
+</Warning>
+
+A API do Need Alert permite que o sistema do seu negócio faça, sem ninguém na frente da tela, o que hoje você faz pelo painel.
+
+## Para que serve
+
+<CardGroup cols={2}>
+  <Card title="Estoque voltou" icon="boxes-stacked">
+    Seu ERP dispara o alerta quando o estoque de um SKU volta a ficar positivo.
+  </Card>
+  <Card title="Horário cancelado" icon="calendar-xmark">
+    O sistema de agenda da clínica avisa a fila de encaixe quando um paciente cancela.
+  </Card>
+  <Card title="Catálogo sincronizado" icon="arrows-rotate">
+    Sua loja virtual cria e atualiza itens a partir dos próprios produtos.
+  </Card>
+  <Card title="Saldo sob controle" icon="coins">
+    Seu financeiro acompanha o saldo e o extrato de créditos.
+  </Card>
+</CardGroup>
+
+## O que estará disponível
+
+- **Chaves de API** criadas pelo dono da rede no painel, com nome, unidades permitidas e permissões. A chave é exibida uma única vez e pode ser trocada ou revogada a qualquer momento.
+- **Itens:** listar, criar, editar e arquivar, com uma **referência externa** para usar o código do seu sistema (como o SKU), e obter o QR Code.
+- **Disparos:** estimar o custo, disparar na hora ou agendar, acompanhar o status, reagendar e cancelar.
+- **Créditos:** consultar saldo e extrato.
+- **Idempotência:** um header `Idempotency-Key` para que uma nova tentativa após uma falha de rede não dispare o alerta duas vezes.
+
+Todo disparo pela API segue as mesmas regras do painel: o custo é calculado antes, o saldo é conferido e o débito é de 1 crédito por pessoa avisada.
+
+## Enquanto isso
+
+As regras gerais da API, como formato das respostas, erros, paginação e idioma, já estão definidas e não vão mudar. Veja [Convenções](/api/convencoes).
