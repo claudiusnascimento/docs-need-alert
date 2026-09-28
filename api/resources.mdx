@@ -1,35 +1,19 @@
 ---
-title: "Tasks API: Create and Manage Tasks"
-sidebarTitle: "Tasks"
-description: "Use the Tasks API to list, create, update, and delete tasks in your projects. Filter by status, assignee, due date, and more."
+title: "Resources API: List, Create, Update, and Delete Items"
+sidebarTitle: "Resources"
+description: "Use the Resources API to list, create, update, and delete resources in your workspace. Filter results and automate resource management programmatically."
 ---
 
-The Tasks API is the core of the Google REST API. Every task you see in the web app — whether it's a quick to-do or a complex work item with assignees, labels, and deadlines — can be created, read, updated, and deleted programmatically. Use the rich filtering capabilities on the list endpoint to build task reports, trigger automations based on status transitions, or synchronize Google tasks with an external project management tool.
+The Resources API gives you full programmatic control over the items in your workspace. Use it to retrieve paginated lists of resources, create new records, apply updates, and permanently remove items you no longer need. All endpoints require a valid API key — write and admin operations additionally require the `write` or `admin` scope respectively.
 
 ---
 
-## GET /tasks — List tasks
+## GET /resources — List resources
 
-Returns a paginated list of tasks. Use query parameters to filter the results by project, status, assignee, or due date range. Tasks are ordered by creation date, most recent first.
-
-<ParamField query="project_id" type="string">
-  Filter tasks to a specific project by its ID.
-</ParamField>
+Returns a paginated list of resources in your workspace, ordered by creation date (most recent first). Use query parameters to narrow results by status or other attributes.
 
 <ParamField query="status" type="string">
-  Filter by task status. One of: `todo`, `in_progress`, `in_review`, `done`.
-</ParamField>
-
-<ParamField query="assignee_id" type="string">
-  Filter tasks assigned to a specific user by their ID.
-</ParamField>
-
-<ParamField query="due_before" type="string">
-  Return only tasks with a due date before this ISO 8601 timestamp (for example, `2024-03-31T23:59:59Z`).
-</ParamField>
-
-<ParamField query="due_after" type="string">
-  Return only tasks with a due date after this ISO 8601 timestamp.
+  Filter resources by status. One of: `active`, `archived`, `draft`.
 </ParamField>
 
 <ParamField query="page" type="integer">
@@ -41,7 +25,7 @@ Returns a paginated list of tasks. Use query parameters to filter the results by
 </ParamField>
 
 ```bash
-curl "https://api.example.com/v1/tasks?project_id=proj_def456&status=in_progress&page=1" \
+curl "https://api.example.com/v1/resources?status=active&page=1&per_page=20" \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
@@ -49,86 +33,87 @@ curl "https://api.example.com/v1/tasks?project_id=proj_def456&status=in_progress
 {
   "data": [
     {
-      "id": "task_xyz789",
-      "title": "Review Q1 report",
-      "status": "in_progress",
-      "project_id": "proj_def456",
-      "assignee_id": "user_abc123",
-      "due_date": "2024-01-31T17:00:00Z",
-      "labels": ["finance", "urgent"],
-      "created_at": "2024-01-15T10:30:00Z"
+      "id": "res_abc123",
+      "name": "Q1 Planning Document",
+      "status": "active",
+      "owner_id": "user_abc123",
+      "created_at": "2024-01-10T08:00:00Z",
+      "updated_at": "2024-01-12T14:30:00Z"
+    },
+    {
+      "id": "res_def456",
+      "name": "Design System Guidelines",
+      "status": "active",
+      "owner_id": "user_def456",
+      "created_at": "2024-01-11T09:00:00Z",
+      "updated_at": "2024-01-11T09:00:00Z"
     }
   ],
   "error": null,
   "meta": {
     "page": 1,
     "per_page": 20,
-    "total": 1
+    "total": 2
   }
 }
 ```
 
 ---
 
-## POST /tasks — Create a task
+## POST /resources — Create a resource
 
-Creates a new task in your workspace. Requires the `write` scope.
+Creates a new resource in your workspace. Requires the `write` scope.
 
-<ParamField body="title" type="string" required>
-  The title of the task. Must be between 1 and 255 characters.
-</ParamField>
-
-<ParamField body="project_id" type="string" required>
-  The ID of the project to add this task to.
+<ParamField body="name" type="string" required>
+  The name of the resource. Must be between 1 and 255 characters.
 </ParamField>
 
 <ParamField body="description" type="string">
-  A longer description of the task. Supports plain text up to 10,000 characters.
-</ParamField>
-
-<ParamField body="assignee_id" type="string">
-  The ID of the workspace member to assign the task to.
-</ParamField>
-
-<ParamField body="due_date" type="string">
-  The due date and time in ISO 8601 format (for example, `2024-03-15T17:00:00Z`).
+  A longer description of the resource. Supports plain text up to 10,000 characters.
 </ParamField>
 
 <ParamField body="status" type="string">
-  The initial status of the task. One of: `todo`, `in_progress`, `in_review`, `done`. Defaults to `todo`.
+  The initial status of the resource. One of: `active`, `archived`, `draft`. Defaults to `draft`.
 </ParamField>
 
-<ParamField body="labels" type="array">
-  An array of label strings to attach to the task (for example, `["backend", "high-priority"]`).
+<ParamField body="owner_id" type="string">
+  The ID of the workspace member to assign as the resource owner.
+</ParamField>
+
+<ParamField body="metadata" type="object">
+  An optional key-value map of custom attributes to associate with the resource.
 </ParamField>
 
 ```bash
-curl -X POST https://api.example.com/v1/tasks \
+curl -X POST https://api.example.com/v1/resources \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "title": "Review Q1 report",
-    "description": "Go through the finance team Q1 report and provide feedback.",
-    "project_id": "proj_def456",
-    "assignee_id": "user_abc123",
-    "due_date": "2024-01-31T17:00:00Z",
-    "status": "todo",
-    "labels": ["finance", "urgent"]
+    "name": "Q1 Planning Document",
+    "description": "Consolidated planning notes for Q1 objectives and key results.",
+    "status": "active",
+    "owner_id": "user_abc123",
+    "metadata": {
+      "department": "engineering",
+      "quarter": "Q1-2024"
+    }
   }'
 ```
 
 ```json
 {
   "data": {
-    "id": "task_xyz789",
-    "title": "Review Q1 report",
-    "description": "Go through the finance team Q1 report and provide feedback.",
-    "status": "todo",
-    "project_id": "proj_def456",
-    "assignee_id": "user_abc123",
-    "due_date": "2024-01-31T17:00:00Z",
-    "labels": ["finance", "urgent"],
-    "created_at": "2024-01-15T10:30:00Z"
+    "id": "res_abc123",
+    "name": "Q1 Planning Document",
+    "description": "Consolidated planning notes for Q1 objectives and key results.",
+    "status": "active",
+    "owner_id": "user_abc123",
+    "metadata": {
+      "department": "engineering",
+      "quarter": "Q1-2024"
+    },
+    "created_at": "2024-01-15T10:30:00Z",
+    "updated_at": "2024-01-15T10:30:00Z"
   },
   "error": null,
   "meta": {
@@ -139,92 +124,53 @@ curl -X POST https://api.example.com/v1/tasks \
 
 ---
 
-## GET /tasks/{id} — Get a task
+## PUT /resources/{id} — Update a resource
 
-Returns the full detail of a single task, including its comment count and all metadata.
-
-<ParamField path="id" type="string" required>
-  The unique identifier of the task to retrieve.
-</ParamField>
-
-```bash
-curl https://api.example.com/v1/tasks/task_xyz789 \
-  -H "Authorization: Bearer YOUR_API_KEY"
-```
-
-```json
-{
-  "data": {
-    "id": "task_xyz789",
-    "title": "Review Q1 report",
-    "description": "Go through the finance team Q1 report and provide feedback.",
-    "status": "in_progress",
-    "project_id": "proj_def456",
-    "assignee_id": "user_abc123",
-    "due_date": "2024-01-31T17:00:00Z",
-    "labels": ["finance", "urgent"],
-    "comments_count": 3,
-    "created_at": "2024-01-15T10:30:00Z",
-    "updated_at": "2024-01-16T14:20:00Z"
-  },
-  "error": null,
-  "meta": {
-    "request_id": "req_yza567"
-  }
-}
-```
-
----
-
-## PATCH /tasks/{id} — Update a task
-
-Updates one or more fields on an existing task. Only include the fields you want to change — all other fields remain unchanged. Requires the `write` scope.
+Replaces the fields of an existing resource. All writable fields you include overwrite the current values; fields you omit are left unchanged. Requires the `write` scope.
 
 <ParamField path="id" type="string" required>
-  The unique identifier of the task to update.
+  The unique identifier of the resource to update.
 </ParamField>
 
-<ParamField body="title" type="string">
-  A new title for the task.
+<ParamField body="name" type="string">
+  A new name for the resource.
 </ParamField>
 
 <ParamField body="description" type="string">
-  Updated task description.
+  Updated description for the resource.
 </ParamField>
 
 <ParamField body="status" type="string">
-  Updated status. One of: `todo`, `in_progress`, `in_review`, `done`.
+  Updated status. One of: `active`, `archived`, `draft`.
 </ParamField>
 
-<ParamField body="assignee_id" type="string">
-  Reassign the task to a different workspace member.
+<ParamField body="owner_id" type="string">
+  Reassign the resource to a different workspace member.
 </ParamField>
 
-<ParamField body="due_date" type="string">
-  A new due date in ISO 8601 format.
-</ParamField>
-
-<ParamField body="labels" type="array">
-  A replacement array of label strings. This overwrites the existing labels entirely.
+<ParamField body="metadata" type="object">
+  A replacement key-value map of custom attributes. This overwrites the existing metadata entirely.
 </ParamField>
 
 ```bash
-curl -X PATCH https://api.example.com/v1/tasks/task_xyz789 \
+curl -X PUT https://api.example.com/v1/resources/res_abc123 \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"status": "in_review", "due_date": "2024-02-07T17:00:00Z"}'
+  -d '{"status": "archived", "name": "Q1 Planning Document (Archived)"}'
 ```
 
 ```json
 {
   "data": {
-    "id": "task_xyz789",
-    "title": "Review Q1 report",
-    "status": "in_review",
-    "project_id": "proj_def456",
-    "assignee_id": "user_abc123",
-    "due_date": "2024-02-07T17:00:00Z",
-    "labels": ["finance", "urgent"],
+    "id": "res_abc123",
+    "name": "Q1 Planning Document (Archived)",
+    "description": "Consolidated planning notes for Q1 objectives and key results.",
+    "status": "archived",
+    "owner_id": "user_abc123",
+    "metadata": {
+      "department": "engineering",
+      "quarter": "Q1-2024"
+    },
     "created_at": "2024-01-15T10:30:00Z",
     "updated_at": "2024-01-17T09:00:00Z"
   },
@@ -237,19 +183,19 @@ curl -X PATCH https://api.example.com/v1/tasks/task_xyz789 \
 
 ---
 
-## DELETE /tasks/{id} — Delete a task
+## DELETE /resources/{id} — Delete a resource
 
-Permanently deletes a task and all its associated comments. This action is irreversible. Requires the `admin` scope. A successful deletion returns `204 No Content` with an empty body.
+Permanently deletes a resource from your workspace. This action is irreversible. Requires the `admin` scope. A successful deletion returns `204 No Content` with an empty body.
 
 <ParamField path="id" type="string" required>
-  The unique identifier of the task to delete.
+  The unique identifier of the resource to delete.
 </ParamField>
 
 ```bash
-curl -X DELETE https://api.example.com/v1/tasks/task_xyz789 \
+curl -X DELETE https://api.example.com/v1/resources/res_abc123 \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
 <Warning>
-  Deleting a task is permanent and cannot be undone. All comments and activity history associated with the task are also deleted. Consider updating the task's status to `done` instead if you want to archive it without losing data.
+  Deleting a resource is permanent and cannot be undone. Consider updating the resource's status to `archived` instead if you want to retain a record without making it active.
 </Warning>

@@ -1,5 +1,5 @@
 ---
-title: "Google REST API: Complete Reference Guide"
+title: "Google REST API: Complete Developer Reference Guide"
 sidebarTitle: "Introduction"
 description: "The Google REST API gives you programmatic access to workspaces, projects, tasks, members, and webhooks. Build integrations and automate workflows."
 ---
@@ -19,10 +19,10 @@ https://api.example.com/v1
 Send all request bodies as JSON. Include the `Content-Type: application/json` header on every `POST`, `PUT`, and `PATCH` request, and include your API key in the `Authorization` header on every call. Query parameters are plain URL-encoded strings and do not require a content type.
 
 ```bash
-curl https://api.example.com/v1/tasks \
+curl -X POST https://api.example.com/v1/resources \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"title": "My new task", "project_id": "proj_abc123"}'
+  -d '{"name": "Q1 Planning Document", "status": "active"}'
 ```
 
 ## Response Format
@@ -40,9 +40,9 @@ Here is an example of a successful response:
 ```json
 {
   "data": {
-    "id": "task_xyz789",
-    "title": "Review Q1 report",
-    "status": "todo",
+    "id": "res_abc123",
+    "name": "Q1 Planning Document",
+    "status": "active",
     "created_at": "2024-01-15T10:30:00Z"
   },
   "error": null,
@@ -109,5 +109,19 @@ Start with authentication to get your API key, then explore the resources availa
     href="/api/users"
   >
     List workspace members, invite new users, update roles, and remove members programmatically.
+  </Card>
+  <Card
+    title="Resources"
+    icon="folder"
+    href="/api/resources"
+  >
+    Create, retrieve, update, and delete workspace resources through a simple REST interface.
+  </Card>
+  <Card
+    title="Webhooks"
+    icon="bolt"
+    href="/api/webhooks"
+  >
+    Register endpoints to receive real-time event notifications when workspace data changes.
   </Card>
 </CardGroup>
