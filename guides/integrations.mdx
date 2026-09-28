@@ -1,0 +1,72 @@
+---
+title: "Connect Google to Your Favorite Tools"
+sidebarTitle: "Integrations"
+description: "Integrate Google with Slack, GitHub, Google Calendar, and other tools to automate notifications, sync tasks, and streamline your team's workflow."
+---
+
+Google does not exist in isolation — your team already relies on a set of tools to communicate, ship code, and manage schedules. The integrations ecosystem lets you connect those tools directly to Google so that updates flow automatically, notifications reach the right channel, and no one has to copy information between apps by hand.
+
+## Available Integrations
+
+Browse the integrations currently supported by Google. Each connection is authorized by your workspace admin or any member with the **Admin** role.
+
+<CardGroup cols={2}>
+  <Card title="Slack" icon="slack" href="#">
+    Receive real-time task notifications, @mention alerts, and daily digests directly in your Slack channels. Create tasks from Slack messages without leaving the conversation.
+  </Card>
+  <Card title="GitHub" icon="github" href="#">
+    Link pull requests and commits to Google tasks. Automatically move a task to *In Review* when a PR is opened and to *Done* when it is merged.
+  </Card>
+  <Card title="Google Calendar" icon="calendar" href="#">
+    Sync task due dates with Google Calendar so your schedule always reflects your workload. Changes in either app update the other in real time.
+  </Card>
+  <Card title="Zapier" icon="bolt" href="#">
+    Build custom automations between Google and 6,000+ apps — no code required. Trigger actions in any tool when tasks are created, updated, or completed.
+  </Card>
+</CardGroup>
+
+## Setting Up an Integration
+
+All integrations follow the same general setup flow. The specific options you see in Step 4 vary by integration.
+
+<Steps>
+  <Step title="Go to Settings > Integrations">
+    1. Click your workspace name in the top-left corner of the sidebar.
+    2. Select **Settings** from the dropdown menu.
+    3. In the Settings sidebar, click **Integrations**. You see a grid of all available integrations with their current connection status.
+  </Step>
+
+  <Step title="Select the Integration You Want">
+    1. Click the card for the integration you want to set up — for example, **Slack**.
+    2. Read the permissions overview to understand what data the integration can access.
+    3. Click **Connect** to begin the authorization flow.
+  </Step>
+
+  <Step title="Authorize the Connection">
+    1. A pop-up window or redirect takes you to the third-party service's authorization page.
+    2. Sign in to the external service if prompted, then review the requested permissions.
+    3. Click **Allow** (or the equivalent button for that service) to grant Google access.
+    4. You are redirected back to Google and the integration's status changes to **Connected**.
+  </Step>
+
+  <Step title="Configure Triggers and Actions">
+    1. On the integration's detail page, review the available **Triggers** (events in Google that fire an action) and **Actions** (what happens in the connected app).
+    2. Toggle the triggers you want to enable — for example, *Task Assigned*, *Status Changed*, or *Due Date Approaching*.
+    3. For each trigger, select the destination (such as a Slack channel or a GitHub repository label) using the dropdowns provided.
+    4. Click **Save Configuration** to activate the integration.
+
+    Test the integration by performing a trigger action (for example, assigning a task) and confirming the expected output appears in the connected tool.
+  </Step>
+</Steps>
+
+## Managing Integrations
+
+After you set up one or more integrations, you can review and adjust them at any time.
+
+- **View active integrations** — return to **Settings > Integrations**. Active connections display a green *Connected* badge. Click any card to see the current configuration and last sync timestamp.
+- **Pause an integration** — toggle the **Enabled** switch on the integration's detail page to temporarily stop all triggers and actions without removing the connection. This is useful during migrations or maintenance windows.
+- **Remove an integration** — click **Disconnect** on the integration's detail page. This revokes Google's access token with the external service and stops all data exchange immediately. The configuration is deleted and cannot be recovered — you must re-authorize and reconfigure if you reconnect later.
+
+<Warning>
+  When a team member with a connected personal integration (such as a linked GitHub account) leaves your organization, revoke their Google access immediately under **Settings > Members** and ask them to disconnect any personal OAuth tokens from their account settings. Failing to do so may allow the departing member to continue receiving project notifications or, in some configurations, to trigger automated actions on your behalf.
+</Warning>

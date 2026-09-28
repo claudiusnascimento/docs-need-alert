@@ -1,0 +1,89 @@
+---
+title: "Manage Your Notification Preferences"
+sidebarTitle: "Notifications"
+description: "Configure how and when Google notifies you — via email, in-app alerts, or webhooks — so you stay informed without getting overwhelmed."
+---
+
+Staying informed is important, but notification overload is a real productivity killer. Google gives you fine-grained control over which events trigger a notification, which channel delivers it, and how often you hear from us. Spend a few minutes configuring your preferences now and you will receive exactly the information you need — nothing more.
+
+## Notification Types
+
+The table below lists every notification event Google can generate and the delivery channels each one supports.
+
+| Event | In-App | Email | Webhook |
+|---|---|---|---|
+| Task assigned to you | ✅ | ✅ | ✅ |
+| Task due soon (24 hrs) | ✅ | ✅ | ✅ |
+| Task overdue | ✅ | ✅ | ✅ |
+| Comment added to your task | ✅ | ✅ | ✅ |
+| @mention in a comment | ✅ | ✅ | ✅ |
+| Task status changed | ✅ | ❌ | ✅ |
+| New member added to project | ✅ | ✅ | ❌ |
+| Project report ready | ✅ | ✅ | ❌ |
+
+> **Key:** ✅ Supported &nbsp;&nbsp; ❌ Not available for this channel
+
+## Configuring In-App Notifications
+
+In-app notifications appear as a numbered badge on the bell icon in the top-right corner of every page. Click the bell to open the notification center.
+
+<Steps>
+  <Step title="Open Notification Settings">
+    1. Click your **profile avatar** in the top-right corner.
+    2. Select **Notification Preferences** from the dropdown menu.
+    3. The preferences panel opens with separate sections for *In-App*, *Email*, and *Webhooks*.
+  </Step>
+
+  <Step title="Choose Which Events You Want In-App">
+    1. Under the **In-App** section, you see a toggle for every supported event.
+    2. Turn off events that are not relevant to your role. For example, if you are not a project admin, you may want to disable *New Member Added* notifications.
+    3. Toggle **All In-App Notifications** at the top of the section to enable or disable the channel entirely while preserving your individual settings.
+  </Step>
+
+  <Step title="Save Your Preferences">
+    1. Click **Save Changes** at the bottom of the panel.
+    2. Your preferences take effect immediately — you will not receive in-app notifications for events you have disabled.
+  </Step>
+</Steps>
+
+## Email Notifications
+
+Email notifications are batched according to a delivery frequency you choose, so you can stay informed without your inbox filling up every few minutes.
+
+<Steps>
+  <Step title="Set Your Email Digest Frequency">
+    1. In **Notification Preferences**, click the **Email** tab.
+    2. Use the **Digest Frequency** dropdown to select one of four options:
+
+       | Option | Behavior |
+       |---|---|
+       | **Instant** | Sends a separate email for each qualifying event as it happens. |
+       | **Daily** | Bundles all qualifying events into a single daily summary email, sent at a time you choose. |
+       | **Weekly** | Sends one summary email at the start of your chosen day each week. |
+       | **Off** | Disables all email notifications. In-app and webhook alerts are unaffected. |
+
+    3. If you choose *Daily* or *Weekly*, use the **Send At** field to set the preferred delivery time and day.
+  </Step>
+
+  <Step title="Select Which Events Trigger Email">
+    1. Below the frequency selector, toggle individual events on or off to fine-tune what appears in your digest.
+    2. Events not available for email delivery (see the table above) are grayed out.
+    3. Click **Save Changes** when you are done.
+  </Step>
+</Steps>
+
+<Info>
+  Email notifications are sent from **notifications@google.app**. Add this address to your contacts or allowlist to prevent digest emails from landing in spam.
+</Info>
+
+## Webhooks
+
+Webhooks let you push notification events to any external URL — a custom Slack bot, a logging service, a CI/CD pipeline, or any system that can receive an HTTP POST request.
+
+To set up a webhook endpoint, visit the [Webhooks reference](/api/webhooks) page, which covers payload schemas, authentication headers, retry behavior, and example integration code.
+
+Once your endpoint is ready, register it under **Settings > Integrations > Webhooks** by entering the URL and selecting the events you want to receive. Google sends a verification ping to the URL and begins delivering payloads immediately after confirmation.
+
+<Tip>
+  Use **Do Not Disturb** mode to silence all in-app notifications during focus time or outside working hours. Enable it by clicking your profile avatar and selecting **Do Not Disturb**, then choose a duration (1 hour, 4 hours, until tomorrow, or a custom end time). Webhook deliveries continue uninterrupted during Do Not Disturb — only the in-app badge and alert sounds are suppressed.
+</Tip>

@@ -1,13 +1,11 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
-  "name": "Google",
+  "projectType": "saas",
+  "projectName": "Google",
+  "projectDescription": "A web application that helps users manage tasks, collaborate, and stay productive in one place.",
   "theme": "almond",
-  "colors": {
-    "primary": "#ef7025",
-    "light": "#eec9bc",
-    "dark": "#4fa1ab"
-  },
-  "favicon": "/favicon.svg",
+  "primaryColor": "#ef7025",
+  "lightColor": "#eec9bc",
+  "darkColor": "#4fa1ab",
   "navigation": {
     "tabs": [
       {
@@ -78,17 +76,21 @@
       }
     ]
   },
-  "navbar": {
-    "links": [
-      { "label": "Support", "href": "mailto:support@example.com" }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Get Started",
-      "href": "/quickstart"
-    }
-  },
-  "footer": {
-    "socials": {}
-  }
+  "keyFeatures": [
+    "User account management and authentication",
+    "Core app workflows and task management",
+    "Third-party integrations",
+    "Notifications and alerts",
+    "Customizable settings and permissions",
+    "Public REST API with webhook support"
+  ],
+  "publicApiSurface": [
+    "GET /api/users",
+    "POST /api/users",
+    "GET /api/resources",
+    "POST /api/resources",
+    "PUT /api/resources/{id}",
+    "DELETE /api/resources/{id}",
+    "POST /api/webhooks"
+  ]
 }
