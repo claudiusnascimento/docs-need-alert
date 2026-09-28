@@ -1,0 +1,57 @@
+---
+title: "Send alerts"
+description: "Notify all subscribers the moment the item becomes available."
+icon: "bell"
+---
+
+When the item becomes available, you send an alert and all of the item's subscribers are notified at the same time.
+
+<Info>
+  Sending alerts requires the **Dispatch events** permission. The owner can always send.
+</Info>
+
+## Send now
+
+<Steps>
+  <Step title="Open the item and click Send alert">
+    Need Alert calculates the cost on the spot and shows how many people will be notified, how many credits the dispatch uses, and your current balance.
+  </Step>
+  <Step title="Write the alert">
+    - **Title (optional):** if left blank, the title is the item name.
+    - **Message:** up to 200 characters. Example: "A fresh batch just came out of the oven, come get it while it's warm!"
+  </Step>
+  <Step title="Confirm">
+    Click **Send**. The status shows **Sending** and changes to **Sent** once everyone has been notified.
+  </Step>
+</Steps>
+
+## What happens to subscriptions
+
+- For a **one-time alert** item, the subscription of each person notified closes.
+- For a **recurring alert** item, the subscription stays active, unless the person reached the number of alerts they chose.
+
+People get a notification on their phone or computer, if they allowed notifications, and the alert also appears under **Notifications** inside Need Alert.
+
+## Cost
+
+Each person notified uses **1 credit**. The charge happens at dispatch time, based on who is subscribed at that moment.
+
+- **No subscribers:** the dispatch is recorded and costs nothing.
+- **Insufficient balance:** the dispatch isn't sent. The dialog shows how much is missing and, if you have the **Manage billing** permission, a **Buy credits** link. See [Credits](/en/establishments/credits).
+
+## When a dispatch isn't accepted
+
+| Situation | Reason |
+|---|---|
+| The item is paused or archived | Only **Active** items can receive dispatches. |
+| The unit is inactive or suspended | A suspended unit can't send new alerts. |
+| A dispatch for this item is already in progress | Wait for the previous one to finish. |
+| You just sent an alert for this item | There's a short gap of a few seconds between dispatches of the same item, to prevent double clicks. |
+
+## History
+
+The **Dispatches** section lists every alert from the unit: date, item, message, status, recipients, credits used, how many notifications were delivered and how many failed, and who sent it. Each item's latest dispatches also appear on the item page.
+
+<Tip>
+  Want to notify people at a set time, like when the oven is done at 4 p.m.? [Schedule the dispatch](/en/establishments/schedule-alerts).
+</Tip>

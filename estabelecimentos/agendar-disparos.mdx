@@ -1,0 +1,57 @@
+---
+title: "Agendar disparos"
+description: "Programe o alerta para um horário futuro e receba um aviso de saldo antes."
+icon: "calendar-days"
+---
+
+Se você já sabe quando o item vai ficar disponível, agende o disparo. A padaria que tira o pão às 16h, o food truck que chega ao meio-dia, a loja que abre as vendas de um lançamento às 10h de sexta.
+
+## Agendar
+
+<Steps>
+  <Step title="Abra o item e clique em Disparar alerta">
+    Ative **Agendar para depois**.
+  </Step>
+  <Step title="Escolha a data e a hora">
+    O horário é sempre o **fuso do estabelecimento**, indicado abaixo do campo, mesmo que você esteja em outro fuso. O agendamento precisa ser para pelo menos 10 minutos à frente e no máximo 90 dias.
+  </Step>
+  <Step title="Escreva o aviso e confirme">
+    Preencha título e mensagem como num disparo imediato e clique em **Agendar**.
+  </Step>
+</Steps>
+
+Nada é debitado ao agendar. O formulário mostra uma **estimativa de hoje**, mas o custo real é calculado no horário do disparo, com as pessoas inscritas naquele momento.
+
+## Aviso de saldo antes do disparo
+
+Cerca de **2 horas antes** do horário, o Need Alert confere o saldo contra a estimativa daquele momento:
+
+- **Saldo insuficiente:** você recebe um e-mail e uma notificação "Saldo insuficiente para o disparo", com o consumo previsto e o saldo atual. Dá tempo de [comprar créditos](/estabelecimentos/creditos).
+- **Saldo suficiente:** você recebe só uma notificação de lembrete dentro do Need Alert, com o número de inscritos e o custo previsto. É a chance de cancelar se o plano mudou.
+
+O aviso vai para o dono e para os membros com a permissão **Disparar eventos** na unidade.
+
+<Note>
+  Agendamentos feitos com menos de 2 horas de antecedência não recebem o aviso de saldo. O custo estimado já aparece no formulário.
+</Note>
+
+## No horário
+
+O disparo sai automaticamente, em até cerca de um minuto após o horário marcado. Ele pode falhar por três motivos, e nesse caso você recebe um e-mail e uma notificação:
+
+| Motivo | O que significa |
+|---|---|
+| **Saldo insuficiente na hora** | O saldo não cobria os inscritos no momento do disparo. Nada é enviado nem debitado. |
+| **Item ou unidade inativos** | O item foi pausado ou a unidade foi desativada até o horário. |
+| **Horário perdido** | O disparo não conseguiu sair até 30 minutos depois do horário. Avisar muito tarde é pior do que não avisar, então ele é descartado. |
+
+Arquivar um item cancela os disparos agendados dele.
+
+## Acompanhar, reagendar e cancelar
+
+Em **Disparos**, a aba **Agendados** mostra o horário, quanto tempo falta, a estimativa de custo e se o aviso de saldo já foi enviado.
+
+- **Reagendar:** muda o horário, o título ou a mensagem. Mudar o horário reabre o aviso de saldo para o novo horário.
+- **Cancelar agendamento:** o disparo não será enviado e nada é debitado.
+
+Só é possível reagendar ou cancelar enquanto o disparo está **Agendado**. Não é possível ter dois disparos agendados do mesmo item no mesmo minuto.

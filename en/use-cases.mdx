@@ -1,0 +1,75 @@
+---
+title: "Use cases"
+description: "Examples of how different businesses use Need Alert."
+icon: "lightbulb"
+---
+
+"Waiting for something that hasn't happened yet" is a problem in every industry. Here are a few examples.
+
+<Tip>
+  Create an item when there's already demand: a customer asked for it, complained it sold out, or asked when it arrives. You're not guessing, you're answering a request that already happened.
+</Tip>
+
+## Retail and entertainment
+
+<CardGroup cols={2}>
+  <Card title="Bakery" icon="bread-slice">
+    QR code on the window: "cheese bread is out of the oven". Only people who subscribed to the cheese bread are notified, when the batch is ready. Use a **one-time alert**.
+  </Card>
+  <Card title="Cinema" icon="film">
+    QR code on the "coming soon" poster: people subscribe before there's a date and are notified when ticket sales open.
+  </Card>
+  <Card title="Neighborhood store" icon="shop">
+    A QR code on the shelf of an out-of-stock product. You notify people when you restock.
+  </Card>
+  <Card title="Online store" icon="cart-shopping">
+    "Notify me when it's back" through a phone notification, instead of an email that lands in spam.
+  </Card>
+  <Card title="Ice cream shop" icon="ice-cream">
+    One item per flavor: "let me know when you make it again".
+  </Card>
+  <Card title="Food truck" icon="truck">
+    A fixed QR code at your spot. You [schedule](/en/establishments/schedule-alerts) the alert for when you arrive.
+  </Card>
+</CardGroup>
+
+## Restaurants
+
+<CardGroup cols={2}>
+  <Card title="Buffet" icon="utensils">
+    One item per dish that isn't always served. Subscribers are notified when it's on today's menu, and you see how many people want each dish.
+  </Card>
+  <Card title="Seasonal dish" icon="fish">
+    Customers are notified the day the dish is back on the menu.
+  </Card>
+</CardGroup>
+
+## Healthcare
+
+<CardGroup cols={2}>
+  <Card title="Clinics and practices" icon="stethoscope">
+    One item per specialty: when a patient cancels, all subscribers are notified and the first to confirm with the clinic gets the slot.
+  </Card>
+  <Card title="Blood bank" icon="droplet">
+    One item per blood type, with a **recurring alert**: donors subscribe once and are called whenever their type runs low.
+  </Card>
+</CardGroup>
+
+<Note>
+  When subscribing reveals health data (blood type, medical specialty), mark the item as **Requires consent for sensitive data**. People confirm an extra consent when subscribing. See [Items and QR codes](/en/establishments/items-and-qr-codes).
+</Note>
+
+## Services with limited spots
+
+- **Courses and gyms:** an alert when someone drops out of a full class.
+- **Hair salons and barbershops:** an alert when a slot opens up after a cancellation.
+- **Car repair shops:** "your car is ready for pickup".
+- **Equipment rental:** an alert when a rented piece of equipment is returned.
+
+## Automatic integrations
+
+With the [API](/en/api/overview), your own system sends the alert:
+
+- Your **ERP** notifies people when a SKU is back in stock.
+- Your **clinic's booking system** notifies people when an appointment is cancelled.
+- Your **delivery platform** notifies people when a restaurant starts taking orders again.

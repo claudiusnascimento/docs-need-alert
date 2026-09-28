@@ -1,0 +1,57 @@
+---
+title: "Disparar alertas"
+description: "Avise todos os inscritos no momento em que o item fica disponível."
+icon: "bell"
+---
+
+Quando o item fica disponível, você dispara um alerta e todos os inscritos no item recebem o aviso ao mesmo tempo.
+
+<Info>
+  Para disparar você precisa da permissão **Disparar eventos**. O dono sempre pode.
+</Info>
+
+## Disparar agora
+
+<Steps>
+  <Step title="Abra o item e clique em Disparar alerta">
+    O Need Alert calcula o custo na hora e mostra quantas pessoas serão notificadas, quantos créditos o disparo usa e o saldo atual.
+  </Step>
+  <Step title="Escreva o aviso">
+    - **Título (opcional):** se ficar em branco, o título é o nome do item.
+    - **Mensagem:** até 200 caracteres. Exemplo: "Saiu uma fornada agora, corre que ainda está quentinho!"
+  </Step>
+  <Step title="Confirme">
+    Clique em **Disparar**. O status aparece como **Enviando** e muda para **Enviado** quando todos foram avisados.
+  </Step>
+</Steps>
+
+## O que acontece com as inscrições
+
+- Num item de **aviso único**, a inscrição de cada pessoa avisada é encerrada.
+- Num item de **aviso recorrente**, a inscrição continua ativa, a menos que a pessoa tenha atingido o número de avisos que escolheu.
+
+A pessoa recebe uma notificação no celular ou no computador, se permitiu avisos, e o aviso também fica em **Notificações**, dentro do Need Alert.
+
+## Custo
+
+Cada pessoa avisada consome **1 crédito**. O débito é feito no momento do disparo, com base em quem está inscrito naquele instante.
+
+- **Nenhum inscrito:** o disparo fica registrado e não custa nada.
+- **Saldo insuficiente:** o disparo não é enviado. O aviso mostra quanto falta e, se você tem a permissão **Gerenciar créditos**, o link **Comprar créditos**. Veja [Créditos](/estabelecimentos/creditos).
+
+## Quando o disparo não é aceito
+
+| Situação | Motivo |
+|---|---|
+| O item está pausado ou arquivado | Só itens **Ativos** recebem disparos. |
+| A unidade está inativa ou suspensa | Uma unidade suspensa não pode disparar novos eventos. |
+| Já existe um disparo do item em andamento | Espere o anterior terminar. |
+| Você acabou de disparar este item | Há um intervalo curto, de alguns segundos, entre disparos do mesmo item, para evitar clique duplo. |
+
+## Histórico
+
+A seção **Disparos** mostra todos os alertas da unidade: data, item, mensagem, status, destinatários, créditos usados, quantos avisos foram entregues e quantos falharam, e quem disparou. Os últimos disparos de cada item também aparecem na página do item.
+
+<Tip>
+  Quer avisar num horário certo, como a saída do forno às 16h? [Agende o disparo](/estabelecimentos/agendar-disparos).
+</Tip>

@@ -1,0 +1,101 @@
+---
+title: "Conventions"
+description: "Versioning, response format, errors, pagination, language, and limits of the API."
+icon: "book"
+---
+
+These rules apply to every Need Alert API endpoint.
+
+## Versioning
+
+Every endpoint lives under `/api/v1`. A change that would break existing clients ships as a new version (`/api/v2`) and never silently changes `v1`. New fields may appear in `v1` responses at any time, so your code should ignore fields it doesn't know.
+
+## Response format
+
+Successful responses wrap the content in `data`, both for a single resource and for a list.
+
+```json
+{
+  "data": {
+    "id": 42,
+    "status": "active"
+  }
+}
+```
+
+Dates and times are always in **UTC**, in ISO 8601 format (`2026-10-01T19:00:00+00:00`). Convert to local time only for display.
+
+Money values are **integers in the currency's smallest unit**, such as cents: `1990` with currency `BRL` is R$ 19.90.
+
+## Errors
+
+Every error has the same shape:
+
+```json
+{
+  "message": "Insufficient credit balance for this dispatch.",
+  "code": "insufficient_credits",
+  "errors": {
+    "required": 40,
+    "available": 12
+  }
+}
+```
+
+| Field | Use |
+|---|---|
+| `code` | A stable `snake_case` identifier. **Write your logic against it.** |
+| `message` | Translated text, for display only. It may change without notice. |
+| `errors` | Optional. For validation errors, the fields with problems; for business errors, extra data. |
+
+### General codes
+
+| HTTP | `code` | When |
+|---|---|---|
+| 400 | `bad_request` | Malformed request body. |
+| 401 | `unauthenticated` | Missing, invalid, or revoked credential. |
+| 403 | `forbidden` | You don't have permission for this action. |
+| 404 | `not_found` | The resource doesn't exist or doesn't belong to you. |
+| 405 | `method_not_allowed` | HTTP method not accepted on this route. |
+| 413 | `payload_too_large` | File or body too large. |
+| 422 | `validation_failed` | Invalid data. See `errors`. |
+| 429 | `too_many_requests` | Rate limit reached. |
+| 500 | `server_error` | Unexpected error. Try again later. |
+| 503 | `service_unavailable` | Service temporarily unavailable. |
+
+### Dispatch codes
+
+| HTTP | `code` | When |
+|---|---|---|
+| 422 | `insufficient_credits` | The balance doesn't cover the dispatch. `errors.required` and `errors.available` hold the values. |
+| 422 | `item_not_dispatchable` | The item isn't active, or the unit or chain is inactive or suspended. |
+| 422 | `dispatch_in_progress` | A dispatch for this item is already in progress. |
+| 422 | `dispatch_too_soon` | The item was dispatched a few seconds ago. |
+| 422 | `schedule_slot_taken` | There's already a scheduled dispatch for this item in the same minute. |
+| 422 | `event_not_scheduled` | Only scheduled dispatches can be rescheduled or cancelled. |
+
+<Note>
+  A resource from another chain returns **404**, not 403. The API doesn't reveal whether a resource that isn't yours exists.
+</Note>
+
+## Pagination
+
+Lists accept `page` and `per_page`. The default is 20 items per page and the maximum is 100.
+
+```http
+GET /api/v1/establishments/7/items?page=2&per_page=50
+```
+
+The response includes `data`, `links` (`first`, `last`, `prev`, `next`), and `meta` (`current_page`, `per_page`, `total`, `last_page`).
+
+## Language
+
+Send `Accept-Language: pt-BR` or `Accept-Language: en` to choose the language of error messages and translated content, such as item names and descriptions. The response reports the language used in the `Content-Language` header. Without the header, responses are in Portuguese (pt-BR).
+
+## Tracing
+
+Every response includes an `X-Request-Id` header. You can also send your own. Share this value with support when asking about a specific request.
+
+## Rate limits
+
+The API limits the number of requests per minute. Past the limit, the response is **429** with a `Retry-After` header saying how many seconds to wait. The `X-RateLimit-Limit` and `X-RateLimit-Remaining` headers show the limit and what's left.

@@ -1,0 +1,42 @@
+---
+title: "API overview"
+description: "Connect your business system to Need Alert and send alerts automatically."
+icon: "code"
+---
+
+<Warning>
+  **The public API is under development.** This page describes what is planned. The full endpoint reference and API keys will be published here once they are available.
+</Warning>
+
+The Need Alert API lets your business system do, with no one at the screen, what you do today in the dashboard.
+
+## What it's for
+
+<CardGroup cols={2}>
+  <Card title="Back in stock" icon="boxes-stacked">
+    Your ERP sends the alert when a SKU's stock is positive again.
+  </Card>
+  <Card title="Appointment cancelled" icon="calendar-xmark">
+    Your clinic's booking system notifies the specialty’s subscribers when a patient cancels.
+  </Card>
+  <Card title="Catalog in sync" icon="arrows-rotate">
+    Your online store creates and updates items from its own products.
+  </Card>
+  <Card title="Balance under control" icon="coins">
+    Your finance team tracks the credit balance and statement.
+  </Card>
+</CardGroup>
+
+## What will be available
+
+- **API keys** created by the chain owner in the dashboard, with a name, allowed units, and permissions. The key is shown only once and can be rotated or revoked at any time.
+- **Items:** list, create, edit, and archive, with an **external reference** so you can use your own system's code (such as the SKU), and get the QR code.
+- **Dispatches:** estimate the cost, send now or schedule, track the status, reschedule, and cancel.
+- **Credits:** check the balance and statement.
+- **Idempotency:** an `Idempotency-Key` header so a retry after a network failure doesn't send the alert twice.
+
+Every dispatch through the API follows the same rules as the dashboard: the cost is calculated first, the balance is checked, and the charge is 1 credit per person notified.
+
+## Meanwhile
+
+The API's general rules, such as response format, errors, pagination, and language, are already defined and won't change. See [Conventions](/en/api/conventions).

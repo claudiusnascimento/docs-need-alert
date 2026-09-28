@@ -1,0 +1,101 @@
+---
+title: "Convenções"
+description: "Versão, formato das respostas, erros, paginação, idioma e limites da API."
+icon: "book"
+---
+
+Estas regras valem para todos os endpoints da API do Need Alert.
+
+## Versionamento
+
+Todos os endpoints ficam sob `/api/v1`. Uma mudança que quebre clientes existentes sai numa nova versão (`/api/v2`) e nunca altera a `v1` silenciosamente. Novos campos podem aparecer nas respostas da `v1` a qualquer momento, então seu código deve ignorar campos que não conhece.
+
+## Formato das respostas
+
+Respostas de sucesso trazem o conteúdo dentro de `data`, tanto para um único recurso quanto para uma lista.
+
+```json
+{
+  "data": {
+    "id": 42,
+    "status": "active"
+  }
+}
+```
+
+Datas e horas estão sempre em **UTC**, no formato ISO 8601 (`2026-10-01T19:00:00+00:00`). Converta para o fuso local só na exibição.
+
+Valores em dinheiro são **inteiros na menor unidade da moeda**, como centavos: `1990` com moeda `BRL` é R$ 19,90.
+
+## Erros
+
+Todo erro segue o mesmo formato:
+
+```json
+{
+  "message": "Saldo de créditos insuficiente para este disparo.",
+  "code": "insufficient_credits",
+  "errors": {
+    "required": 40,
+    "available": 12
+  }
+}
+```
+
+| Campo | Uso |
+|---|---|
+| `code` | Identificador estável em `snake_case`. **Programe contra ele.** |
+| `message` | Texto traduzido, só para exibição. Pode mudar sem aviso. |
+| `errors` | Opcional. Em erros de validação, os campos com problema; em erros de regra, dados extras. |
+
+### Códigos gerais
+
+| HTTP | `code` | Quando |
+|---|---|---|
+| 400 | `bad_request` | Corpo da requisição malformado. |
+| 401 | `unauthenticated` | Credencial ausente, inválida ou revogada. |
+| 403 | `forbidden` | Sem permissão para esta ação. |
+| 404 | `not_found` | O recurso não existe ou não pertence a você. |
+| 405 | `method_not_allowed` | Método HTTP não aceito nesta rota. |
+| 413 | `payload_too_large` | Arquivo ou corpo grande demais. |
+| 422 | `validation_failed` | Dados inválidos. Veja `errors`. |
+| 429 | `too_many_requests` | Limite de requisições atingido. |
+| 500 | `server_error` | Erro inesperado. Tente de novo mais tarde. |
+| 503 | `service_unavailable` | Serviço temporariamente indisponível. |
+
+### Códigos de disparo
+
+| HTTP | `code` | Quando |
+|---|---|---|
+| 422 | `insufficient_credits` | O saldo não cobre o disparo. `errors.required` e `errors.available` trazem os valores. |
+| 422 | `item_not_dispatchable` | O item não está ativo, ou a unidade ou a rede estão inativas ou suspensas. |
+| 422 | `dispatch_in_progress` | Já existe um disparo deste item em andamento. |
+| 422 | `dispatch_too_soon` | O item foi disparado há poucos segundos. |
+| 422 | `schedule_slot_taken` | Já existe um disparo agendado deste item no mesmo minuto. |
+| 422 | `event_not_scheduled` | Só disparos agendados podem ser reagendados ou cancelados. |
+
+<Note>
+  Um recurso de outra rede responde **404**, não 403. A API não revela se um recurso que não é seu existe.
+</Note>
+
+## Paginação
+
+Listas aceitam `page` e `per_page`. O padrão é 20 itens por página e o máximo é 100.
+
+```http
+GET /api/v1/establishments/7/items?page=2&per_page=50
+```
+
+A resposta traz `data`, `links` (`first`, `last`, `prev`, `next`) e `meta` (`current_page`, `per_page`, `total`, `last_page`).
+
+## Idioma
+
+Envie `Accept-Language: pt-BR` ou `Accept-Language: en` para escolher o idioma das mensagens de erro e dos conteúdos traduzidos, como nome e descrição dos itens. A resposta informa o idioma usado no header `Content-Language`. Sem o header, as respostas vêm em português (pt-BR).
+
+## Rastreamento
+
+Toda resposta traz o header `X-Request-Id`. Você também pode enviar o seu. Informe esse valor ao falar com o suporte sobre uma requisição específica.
+
+## Limite de requisições
+
+A API limita o número de requisições por minuto. Ao passar do limite, a resposta é **429** com o header `Retry-After`, que diz quantos segundos esperar. Os headers `X-RateLimit-Limit` e `X-RateLimit-Remaining` mostram o limite e quanto ainda resta.

@@ -1,94 +1,110 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "name": "Google",
-  "theme": "almond",
+  "theme": "mint",
+  "name": "Need Alert",
+  "description": "Avise seus clientes no momento em que o que eles esperam fica disponível.",
   "colors": {
-    "primary": "#ef7025",
-    "light": "#eec9bc",
-    "dark": "#4fa1ab"
+    "primary": "#465FFF",
+    "light": "#7C8CFF",
+    "dark": "#3641CC"
   },
   "favicon": "/favicon.svg",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
   "navigation": {
-    "tabs": [
+    "languages": [
       {
-        "tab": "Documentation",
-        "groups": [
+        "language": "pt-BR",
+        "default": true,
+        "tabs": [
           {
-            "group": "Get Started",
-            "pages": [
-              "introduction",
-              "quickstart",
-              "account-setup"
+            "tab": "Guias",
+            "groups": [
+              {
+                "group": "Começando",
+                "pages": ["index", "como-funciona", "casos-de-uso"]
+              },
+              {
+                "group": "Para estabelecimentos",
+                "pages": [
+                  "estabelecimentos/primeiros-passos",
+                  "estabelecimentos/itens-e-qr-code",
+                  "estabelecimentos/disparar-alertas",
+                  "estabelecimentos/agendar-disparos",
+                  "estabelecimentos/creditos",
+                  "estabelecimentos/equipe-e-papeis",
+                  "estabelecimentos/catalogo-da-rede"
+                ]
+              },
+              {
+                "group": "Para quem espera",
+                "pages": [
+                  "clientes/inscrever-se",
+                  "clientes/minhas-inscricoes",
+                  "clientes/avisos-e-app"
+                ]
+              }
             ]
           },
           {
-            "group": "Core Concepts",
-            "pages": [
-              "concepts/overview",
-              "concepts/key-features",
-              "concepts/data-model"
-            ]
-          },
-          {
-            "group": "Guides",
-            "pages": [
-              "guides/first-steps",
-              "guides/common-workflows",
-              "guides/integrations",
-              "guides/notifications"
-            ]
-          },
-          {
-            "group": "Configuration",
-            "pages": [
-              "configuration/settings",
-              "configuration/customization",
-              "configuration/permissions"
-            ]
-          },
-          {
-            "group": "Help",
-            "pages": [
-              "help/faq",
-              "help/troubleshooting",
-              "help/contact-support"
+            "tab": "API",
+            "groups": [
+              {
+                "group": "API",
+                "pages": ["api/visao-geral", "api/convencoes"]
+              }
             ]
           }
         ]
       },
       {
-        "tab": "API Reference",
-        "groups": [
+        "language": "en",
+        "tabs": [
           {
-            "group": "Overview",
-            "pages": [
-              "api/introduction",
-              "api/authentication"
+            "tab": "Guides",
+            "groups": [
+              {
+                "group": "Getting started",
+                "pages": ["en/index", "en/how-it-works", "en/use-cases"]
+              },
+              {
+                "group": "For establishments",
+                "pages": [
+                  "en/establishments/getting-started",
+                  "en/establishments/items-and-qr-codes",
+                  "en/establishments/send-alerts",
+                  "en/establishments/schedule-alerts",
+                  "en/establishments/credits",
+                  "en/establishments/team-and-roles",
+                  "en/establishments/chain-catalog"
+                ]
+              },
+              {
+                "group": "For people waiting",
+                "pages": [
+                  "en/customers/subscribe",
+                  "en/customers/my-subscriptions",
+                  "en/customers/alerts-and-app"
+                ]
+              }
             ]
           },
           {
-            "group": "Endpoints",
-            "pages": [
-              "api/users",
-              "api/resources",
-              "api/webhooks"
+            "tab": "API",
+            "groups": [
+              {
+                "group": "API",
+                "pages": ["en/api/overview", "en/api/conventions"]
+              }
             ]
           }
         ]
       }
     ]
   },
-  "navbar": {
-    "links": [
-      { "label": "Support", "href": "mailto:support@example.com" }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Get Started",
-      "href": "/quickstart"
-    }
-  },
-  "footer": {
-    "socials": {}
+  "contextual": {
+    "options": ["copy", "view", "chatgpt", "claude", "perplexity", "mcp", "cursor", "vscode"]
   }
 }
