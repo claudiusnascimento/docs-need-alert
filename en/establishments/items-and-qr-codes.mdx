@@ -1,10 +1,10 @@
 ---
 title: "Items and QR codes"
-description: "Add what your customers wait for and generate the queue's QR code."
+description: "Add what your customers wait for and generate its QR code for subscriptions."
 icon: "qrcode"
 ---
 
-An **item** is what people wait for at your unit: a product, a dish, a slot, a class. Each item has its own queue, its own QR code, and a public link.
+An **item** is what people wait for at your unit: a product, a dish, a slot, a class. Each item has its own subscribers, its own QR code, and a public link.
 
 <Info>
   Creating items requires the **Create items** permission. Editing, archiving, and changing the picture require **Edit items**. The owner has all permissions.
@@ -19,11 +19,11 @@ An **item** is what people wait for at your unit: a product, a dish, a slot, a c
   <Step title="Fill in the content">
     **Name** and **Description** are what customers see. You can fill them in Portuguese and English: each person sees the item in their language and, if a translation is missing, in the chain's default language, which is required.
   </Step>
-  <Step title="Choose the queue type">
-    - **Single queue:** the customer is notified once and leaves the queue.
-    - **Recurring queue:** the customer stays in the queue and can be notified many times.
+  <Step title="Choose the alert type">
+    - **One-time alert:** the customer is notified once and the subscription closes.
+    - **Recurring alert:** the subscription stays active and the customer can be notified many times.
 
-    See the difference in [How it works](/en/how-it-works#single-and-recurring-queues).
+    See the difference in [How it works](/en/how-it-works).
   </Step>
   <Step title="Save">
     Click **Save item**. The QR code is generated right away and **never changes**, so you can print it with confidence.
@@ -32,7 +32,7 @@ An **item** is what people wait for at your unit: a product, a dish, a slot, a c
 
 ## Sensitive data
 
-Check **Requires consent for sensitive data** when joining the queue reveals health data, such as a blood type or a medical specialty. People joining must confirm an extra consent, and the public page says so up front.
+Check **Requires consent for sensitive data** when subscribing reveals health data, such as a blood type or a medical specialty. People subscribing must confirm an extra consent, and the public page says so up front.
 
 ## QR code and poster
 
@@ -45,20 +45,20 @@ On the item page, the **QR Code** card points to the item's public link. You can
 
 The item's **Picture** shows on the public page and on the poster. Use JPEG, PNG, or WebP up to 5 MB.
 
-## Follow the queue
+## Follow your subscribers
 
-The **Subscribers** column shows how many people are waiting for each item, updated in real time. On the item page, the **Queue** card lists who is waiting and since when. For privacy, only first names are shown.
+The **Subscribers** column shows how many people are waiting for each item, updated in real time. On the item page, the **Subscribers** card lists who is waiting and since when. For privacy, only first names are shown.
 
 ## Item status
 
 | Status | What happens |
 |---|---|
-| **Active** | Accepts new people in the queue and can receive dispatches. |
-| **Paused** | The public page says the item is paused. Nobody can join and you can't send alerts. |
+| **Active** | Accepts new subscriptions and can receive dispatches. |
+| **Paused** | The public page says the item is paused. Nobody can subscribe and you can't send alerts. |
 | **Archived** | The item is retired: subscriptions are closed, scheduled dispatches are cancelled, and the QR code shows the item is no longer available. **This can't be undone.** |
 
 To archive, use **Archive** in the list or on the item page.
 
 <Warning>
-  Changing the queue type of an item that already has people waiting changes what happens to them on the next alert. The form warns you before saving.
+  Changing the alert type of an item that already has people waiting changes what happens to them on the next alert. The form warns you before saving.
 </Warning>

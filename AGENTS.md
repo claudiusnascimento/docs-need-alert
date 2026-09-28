@@ -11,15 +11,19 @@
 
 ## Terminology
 
-UI element names must match the app's translation files exactly (bold them). Preferred terms:
+**Need Alert is not a queue.** There is no order, position, or waiting time: everyone subscribed to an item is notified at the same time. Never describe the product with "fila", "lista de espera", "queue", or "waitlist" (the only allowed use is contrasting Need Alert with queue tools, as in `como-funciona.mdx`).
+
+UI element names must match the app's translation files exactly (bold them). The app's UI still says "fila" in some labels; the docs already use the new labels below, and the app will be renamed to match. Preferred terms:
 
 | pt-BR | en | Notes |
 |---|---|---|
 | estabelecimento / unidade | establishment / unit | A physical unit |
 | rede | chain | The paying account that owns units, credits and catalog (`Tenant` in code) |
 | item | item | What people wait for |
-| fila (única / recorrente) | queue (single / recurring) | Not "lista de espera" / "waitlist" in UI references |
-| inscrição | subscription | A person's entry in a queue |
+| inscrição / inscritos | subscription / subscribers | A person's request to be notified about an item; everyone subscribed is notified at the same time |
+| inscrever-se / cancelar inscrição | subscribe / unsubscribe | Buttons: **Quero ser avisado** / **Notify me**, **Cancelar inscrição** / **Unsubscribe** |
+| Minhas inscrições | My subscriptions | The person's list of subscriptions |
+| aviso único / aviso recorrente | one-time alert / recurring alert | The item's alert type (`queue_type` in code) |
 | disparo / alerta | dispatch / alert | Button: **Disparar alerta** / **Send alert**; section: **Disparos** / **Dispatches** |
 | créditos | credits | 1 credit = 1 person notified |
 | catálogo da rede | chain catalog | |
@@ -37,6 +41,6 @@ UI element names must match the app's translation files exactly (bold them). Pre
 
 ## Content boundaries
 
-- Public audience: establishments, people waiting in queues, and API integrators
+- Public audience: establishments, people subscribed to items, and API integrators
 - Don't document internal architecture, the admin panel, or features that are not released; planned features are marked as such (see `api/visao-geral.mdx`)
-- The API reference is generated from OpenAPI once the public API ships (Phase 15 in the app roadmap)
+- The API reference is generated from OpenAPI once the public API ships (Phase 15 in the app roadmap). Follow `GUIA-DOCUMENTACAO-API.md` (internal, not published) for what to do then

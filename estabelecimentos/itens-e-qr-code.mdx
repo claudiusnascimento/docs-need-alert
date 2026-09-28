@@ -1,10 +1,10 @@
 ---
 title: "Itens e QR Code"
-description: "Cadastre o que seus clientes esperam e gere o QR Code da fila."
+description: "Cadastre o que seus clientes esperam e gere o QR Code para as inscrições."
 icon: "qrcode"
 ---
 
-Um **item** é o que as pessoas esperam na sua unidade: um produto, um prato, uma vaga, uma turma. Cada item tem a própria fila, o próprio QR Code e um link público.
+Um **item** é o que as pessoas esperam na sua unidade: um produto, um prato, uma vaga, uma turma. Cada item tem os próprios inscritos, o próprio QR Code e um link público.
 
 <Info>
   Para criar itens você precisa da permissão **Criar itens**. Para editar, arquivar e trocar a foto, **Editar itens**. O dono tem todas.
@@ -19,9 +19,9 @@ Um **item** é o que as pessoas esperam na sua unidade: um produto, um prato, um
   <Step title="Preencha o conteúdo">
     **Nome** e **Descrição** são o que o cliente vê. Você pode preenchê-los em português e em inglês: cada pessoa vê o item no idioma dela e, se faltar a tradução, no idioma padrão da rede, que é obrigatório.
   </Step>
-  <Step title="Escolha o tipo de fila">
-    - **Fila única:** o cliente é avisado uma vez e sai da fila.
-    - **Fila recorrente:** o cliente permanece na fila e pode ser avisado várias vezes.
+  <Step title="Escolha o tipo de aviso">
+    - **Aviso único:** o cliente é avisado uma vez e a inscrição é encerrada.
+    - **Aviso recorrente:** a inscrição continua ativa e o cliente pode ser avisado várias vezes.
 
     Veja a diferença em [Como funciona](/como-funciona).
   </Step>
@@ -32,7 +32,7 @@ Um **item** é o que as pessoas esperam na sua unidade: um produto, um prato, um
 
 ## Dado sensível
 
-Marque **Exige consentimento para dado sensível** quando entrar na fila revela um dado de saúde, como tipo sanguíneo ou especialidade médica. Quem entra na fila precisa confirmar um aceite adicional, e a página pública avisa isso antes.
+Marque **Exige consentimento para dado sensível** quando se inscrever revela um dado de saúde, como tipo sanguíneo ou especialidade médica. Quem se inscreve precisa confirmar um aceite adicional, e a página pública avisa isso antes.
 
 ## QR Code e cartaz
 
@@ -45,20 +45,20 @@ Na página do item, o cartão **QR Code** aponta para o link público do item. V
 
 A **Foto** do item aparece na página pública e no cartaz. Use JPEG, PNG ou WebP de até 5 MB.
 
-## Acompanhar a fila
+## Acompanhar os inscritos
 
-A coluna **Inscritos** mostra quantas pessoas esperam por cada item, atualizada em tempo real. Na página do item, o cartão **Fila** lista quem está esperando e desde quando. Por privacidade, aparece só o primeiro nome.
+A coluna **Inscritos** mostra quantas pessoas esperam por cada item, atualizada em tempo real. Na página do item, o cartão **Inscritos** lista quem está esperando e desde quando. Por privacidade, aparece só o primeiro nome.
 
 ## Status do item
 
 | Status | O que acontece |
 |---|---|
-| **Ativo** | Aceita novas pessoas na fila e pode receber disparos. |
-| **Pausado** | A página pública avisa que o item está pausado. Ninguém entra na fila e não é possível disparar. |
+| **Ativo** | Aceita novas inscrições e pode receber disparos. |
+| **Pausado** | A página pública avisa que o item está pausado. Ninguém consegue se inscrever e não é possível disparar. |
 | **Arquivado** | O item sai de uso: as inscrições são encerradas, os disparos agendados são cancelados e o QR Code passa a mostrar que o item não está mais disponível. **Não pode ser desfeito.** |
 
 Para arquivar, use **Arquivar** na lista ou na página do item.
 
 <Warning>
-  Trocar o tipo de fila de um item que já tem pessoas esperando muda o que acontece com elas no próximo aviso. O formulário avisa antes de salvar.
+  Trocar o tipo de aviso de um item que já tem pessoas esperando muda o que acontece com elas no próximo aviso. O formulário avisa antes de salvar.
 </Warning>

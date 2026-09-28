@@ -1,10 +1,10 @@
 ---
 title: "Send alerts"
-description: "Notify everyone in the queue the moment the item becomes available."
+description: "Notify all subscribers the moment the item becomes available."
 icon: "bell"
 ---
 
-When the item becomes available, you send an alert and everyone in the queue is notified at the same time.
+When the item becomes available, you send an alert and all of the item's subscribers are notified at the same time.
 
 <Info>
   Sending alerts requires the **Dispatch events** permission. The owner can always send.
@@ -25,18 +25,18 @@ When the item becomes available, you send an alert and everyone in the queue is 
   </Step>
 </Steps>
 
-## What happens to the queue
+## What happens to subscriptions
 
-- In a **single queue**, each person notified leaves the queue.
-- In a **recurring queue**, the person stays in the queue, unless they reached the number of alerts they chose.
+- For a **one-time alert** item, the subscription of each person notified closes.
+- For a **recurring alert** item, the subscription stays active, unless the person reached the number of alerts they chose.
 
 People get a notification on their phone or computer, if they allowed notifications, and the alert also appears under **Notifications** inside Need Alert.
 
 ## Cost
 
-Each person notified uses **1 credit**. The charge happens at dispatch time, based on who is in the queue at that moment.
+Each person notified uses **1 credit**. The charge happens at dispatch time, based on who is subscribed at that moment.
 
-- **Empty queue:** the dispatch is recorded and costs nothing.
+- **No subscribers:** the dispatch is recorded and costs nothing.
 - **Insufficient balance:** the dispatch isn't sent. The dialog shows how much is missing and, if you have the **Manage billing** permission, a **Buy credits** link. See [Credits](/en/establishments/credits).
 
 ## When a dispatch isn't accepted

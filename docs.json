@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "Need Alert",
-  "description": "Filas de espera e alertas sob demanda para qualquer negócio.",
+  "description": "Avise seus clientes no momento em que o que eles esperam fica disponível.",
   "colors": {
     "primary": "#465FFF",
     "light": "#7C8CFF",
@@ -41,8 +41,8 @@
               {
                 "group": "Para quem espera",
                 "pages": [
-                  "clientes/entrar-na-fila",
-                  "clientes/minhas-filas",
+                  "clientes/inscrever-se",
+                  "clientes/minhas-inscricoes",
                   "clientes/avisos-e-app"
                 ]
               }
@@ -84,8 +84,8 @@
               {
                 "group": "For people waiting",
                 "pages": [
-                  "en/customers/join-a-queue",
-                  "en/customers/my-queues",
+                  "en/customers/subscribe",
+                  "en/customers/my-subscriptions",
                   "en/customers/alerts-and-app"
                 ]
               }

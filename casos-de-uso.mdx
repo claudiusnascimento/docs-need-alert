@@ -4,16 +4,26 @@ description: "Exemplos de como diferentes negócios usam o Need Alert."
 icon: "lightbulb"
 ---
 
-"Esperar por algo" é um problema de qualquer setor. Estes são alguns exemplos.
+"Esperar por algo que ainda não aconteceu" é um problema de qualquer setor. Estes são alguns exemplos.
 
-## Comércio físico
+<Tip>
+  Crie um item quando já existe procura: o cliente pediu, reclamou que acabou, perguntou quando chega. Você não cadastra às cegas, responde a um pedido que já aconteceu.
+</Tip>
+
+## Comércio e entretenimento
 
 <CardGroup cols={2}>
   <Card title="Padaria" icon="bread-slice">
-    QR Code na vitrine: "pão de queijo saiu do forno". Quem escaneou recebe o aviso na hora da fornada. Use **fila única**.
+    QR Code na vitrine: "pão de queijo saiu do forno". Só quem se inscreveu no pão de queijo é avisado, na hora da fornada. Use **aviso único**.
+  </Card>
+  <Card title="Cinema" icon="film">
+    QR Code no cartaz de "em breve": as pessoas se inscrevem antes de existir data, e são avisadas quando a venda de ingressos abre.
   </Card>
   <Card title="Loja de bairro" icon="shop">
     QR Code colado na prateleira de um produto em falta. Você avisa quando repor.
+  </Card>
+  <Card title="Loja virtual" icon="cart-shopping">
+    "Avise-me quando chegar" por notificação no celular, em vez de um e-mail que cai no spam.
   </Card>
   <Card title="Sorveteria" icon="ice-cream">
     Um item por sabor: "avise quando fizer de novo".
@@ -27,7 +37,7 @@ icon: "lightbulb"
 
 <CardGroup cols={2}>
   <Card title="Self-service" icon="utensils">
-    Um item por prato do dia. Você vê quantas pessoas esperam o estrogonofe e decide se vale fazer mais.
+    Um item por prato que nem sempre sai, como o escondidinho. Os inscritos são avisados quando ele entra no cardápio do dia, e você vê quantas pessoas querem cada prato.
   </Card>
   <Card title="Prato sazonal" icon="fish">
     O cliente é avisado no dia em que o prato volta ao cardápio.
@@ -38,20 +48,20 @@ icon: "lightbulb"
 
 <CardGroup cols={2}>
   <Card title="Clínica e consultório" icon="stethoscope">
-    Fila de encaixe: quando um paciente cancela, todos da fila recebem o aviso e o primeiro a confirmar fica com o horário.
+    Um item por especialidade: quando um paciente cancela, todos os inscritos recebem o aviso e o primeiro a confirmar com a clínica fica com o horário.
   </Card>
   <Card title="Banco de sangue" icon="droplet">
-    Um item por tipo sanguíneo, com **fila recorrente**: o doador se inscreve uma vez e é convocado sempre que o estoque do tipo dele ficar crítico.
+    Um item por tipo sanguíneo, com **aviso recorrente**: o doador se inscreve uma vez e é convocado sempre que o estoque do tipo dele ficar crítico.
   </Card>
 </CardGroup>
 
 <Note>
-  Quando entrar numa fila revela um dado de saúde (tipo sanguíneo, especialidade médica), marque o item como **Exige consentimento para dado sensível**. Quem entra na fila confirma um aceite adicional. Veja [Itens e QR Code](/estabelecimentos/itens-e-qr-code).
+  Quando se inscrever revela um dado de saúde (tipo sanguíneo, especialidade médica), marque o item como **Exige consentimento para dado sensível**. Quem se inscreve confirma um aceite adicional. Veja [Itens e QR Code](/estabelecimentos/itens-e-qr-code).
 </Note>
 
 ## Serviços com vaga limitada
 
-- **Curso ou academia:** fila de espera de uma turma lotada, com aviso quando alguém desiste.
+- **Curso ou academia:** aviso quando alguém desiste e abre vaga numa turma lotada.
 - **Salão de beleza e barbearia:** aviso de horário liberado por cancelamento.
 - **Oficina mecânica:** "seu carro está pronto para retirada".
 - **Locadora de equipamentos:** aviso quando um equipamento emprestado é devolvido.
